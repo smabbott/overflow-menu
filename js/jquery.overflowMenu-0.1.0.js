@@ -1,4 +1,4 @@
-$.fn.overflowable = function(){
+$.fn.overflowMenu = function(){
   var el   = this,
       tabs = this.find('li'),
       overflowMenuIsActive = false;
