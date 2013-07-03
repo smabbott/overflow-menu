@@ -1,0 +1,65 @@
+/* Remove from here that which is not required for the plugin */
+.clearfix{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+ul{
+  margin:0;
+  padding:0;
+}
+
+.overflowable{
+  list-style-type:none;
+  padding:1px;
+  position:relative;
+  width:100%;
+
+  box-sizing:border-box;
+}
+
+.overflowable > li{
+  float:left;
+  display:block; 
+  padding:1em;
+  line-height:0.5em;
+  margin:0;
+}
+
+.overflowed{
+  display:none;
+}
+
+.overflowable .overflow-menu{
+  display:none;
+  padding:0;
+}
+
+.overflow-menu{
+  position:relative;
+}
+
+.overflow-menu > ul{
+  list-style-type:none;
+  position:absolute;
+}
+
+.overflow-menu li{
+  display:none;
+  float:none;
+  padding:1em;
+}
+
+.overflow-menu li:first-child{
+  border:0;
+}
+
+.overflow-menu .ellipsis{
+  display:block;
+  text-align:center;
+  cursor:pointer;
+}
+
