@@ -43,6 +43,8 @@ ul{
 
 .overflowable li{
   border-right:1px solid rgb(260,110,110);
+  padding:1em;
+  line-height:0.5em;
 }
 
 .overflowable > li:last-child{

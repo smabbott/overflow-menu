@@ -14,8 +14,6 @@
 .overflowable > li{
   float:left;
   display:block; 
-  padding:1em;
-  line-height:0.5em;
   margin:0;
 }
 
@@ -41,7 +39,6 @@
 .overflow-menu li{
   display:none;
   float:none;
-  padding:1em;
 }
 
 .overflow-menu li:first-child{
