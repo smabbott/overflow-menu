@@ -26,6 +26,7 @@
 .overflowable .overflow-menu{
   display:none;
   padding:0;
+  z-index: 10
 }
 
 .overflow-menu{
