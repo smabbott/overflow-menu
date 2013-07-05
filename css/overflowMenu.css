@@ -1,21 +1,14 @@
-.clearfix{
-  content: "";
-  display: table;
-  clear: both;
-}
-
-ul{
-  margin:0;
-  padding:0;
-}
 
 .overflowable{
   list-style-type:none;
   padding:1px;
   position:relative;
   width:100%;
-
   box-sizing:border-box;
+  /* clearfix */
+  clear: both;
+  content: "";
+  display: table;
 }
 
 .overflowable > li{

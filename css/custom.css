@@ -21,6 +21,12 @@ section{
   padding:1em;
 }
 
+
+ul{
+  margin:0;
+  padding:0;
+}
+
 @media only screen and (min-width:45em){
   section {
     -moz-column-count:2; 
