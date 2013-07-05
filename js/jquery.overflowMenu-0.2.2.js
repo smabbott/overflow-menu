@@ -8,11 +8,11 @@ $.fn.overflowMenu = function(){
     // if overflow menu isn't already active add a listener to hide it if clicking anywhere else
     // otherwise remove the listener.
     if(overflowMenuIsActive){
-      $('*:not(.overflowed)').on('click.ellipsis', function(){
+      $('*:not(.overflow-menu)').on('click.ellipsis', function(){
         $('*').off('click.ellipsis');
         el.find('li.overflowed').toggle();
         overflowMenuIsActive = false;
-        return false;
+        // return false;
       });
     }
     el.find('li.overflowed').toggle();
@@ -22,16 +22,16 @@ $.fn.overflowMenu = function(){
   function init(){
     var itemsWidth = 0,
         items = el.find('li:not(.overflow-menu, .overflow-menu li)').show(),
-        overflowMenuItems = overflowMenu.find('li:not(.ellipsis)'),
+        overflowMenuItems = menu.find('li:not(.ellipsis)'),
         threshold = el.width();
-    overflowMenu.hide();
+    menu.hide();
     
     // items.length - 1 because a dropdown menu only makes sense if it has more than 1 item tucked under it
     for(var i=0; i<items.length - 1; i++){
       var li = $(items[i]);
       itemsWidth += li.outerWidth(true);
       if(itemsWidth > (threshold - $(items[i]).outerWidth(true)) ){
-        overflowMenu.find('.ellipsis').show().width(el.width() - itemsWidth);
+        menu.find('.ellipsis').show().width(el.width() - itemsWidth);
         overflowMenuItems.hide();
         
         for(var j = i; j < items.length; j++){
@@ -39,21 +39,31 @@ $.fn.overflowMenu = function(){
           $(overflowMenuItems[j]).addClass('overflowed');
         }
         
-        overflowMenu.show();
+        menu.show();
         break;
       }else{
-        overflowMenu.hide();
-        overflowMenu.find('.overflowed').removeClass('overflowed');
+        menu.hide();
+        menu.find('.overflowed').removeClass('overflowed');
       }
         
     }
+
+    // FIXME: select tab callback
+    menu.on('click', 'li:not(.ellipsis)', function(e){
+      menu.find('li').removeClass('ui-state-active');
+      e.preventDefault();
+      var self = $($(this).find('a'));
+      $(this).addClass('ui-state-active');
+      el.find("> li > a[href='" + self.attr('href') + "']").click();
+
+    });
   }
   
   // insert the overflow menu
   this.append('<li class="overflow-menu"><ul><li class="ellipsis">&#8230;</li></ul></li>');
   // make a copy of the tabs for the overflow menu
   this.find('.overflow-menu > ul').append(tabs.clone());
-  var overflowMenu = el.find('.overflow-menu');
+  var menu= el.find('.overflow-menu');
 
   // apply event listeners
   $(window).on('resize', init);
